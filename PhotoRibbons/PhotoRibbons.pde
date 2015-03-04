@@ -8,6 +8,7 @@ void setup(){
   smooth();
   size(768, 480, P2D);
   
+  // load a cute cat photo
   catImage = loadImage("cute_cat.jpg");
   
   history = new ArrayList();
@@ -16,8 +17,10 @@ void setup(){
 void draw(){
 
   //background(255);
-  tint(255);
+ 
   
+  // draw the image as the background
+   tint(255);
   image( catImage, 0, 0 );
   
   stroke(50);
@@ -31,8 +34,7 @@ void drawRibbon(){
   
   float thick = 10;
   
-  
-  
+  // load the pixels
    catImage.loadPixels();  
   
   int pos; // = (int(pt0.y) * catImage.width) + int(pt0.x);
@@ -54,6 +56,8 @@ void drawRibbon(){
       offset.x = cos( angle + PI/2 ) * thick;
       offset.y = sin( angle + PI/2 ) * thick;
       
+      // for every second segment
+      // adapt the color
       if( i % 2 == 0 ){
         
         // keep x & y in bounds
@@ -68,14 +72,17 @@ void drawRibbon(){
         c = catImage.pixels[pos];
       }
       
+      // set the color
       fill(c);
     
+      // add the vertices
       vertex( pt1.x + offset.x, pt1.y + offset.y );
       vertex( pt1.x - offset.x, pt1.y - offset.y );
   }
   
   endShape();
   
+  // update the pixels
   catImage.updatePixels();
 }
 

@@ -1,5 +1,5 @@
 
-
+// store the history and the current point
 ArrayList<PVector>history;
 PVector currentPt;
 
@@ -31,7 +31,8 @@ void draw(){
   
    if( history.size() > 0 ){
   
-     
+    // offset by the center point so the shape
+    // is always drawn in the middle of the screen
     PVector center = history.get(history.size()/2);
     translate(-center.x, -center.y);
     translate( width/2, height/2);
@@ -43,6 +44,7 @@ void draw(){
   
   popMatrix();
 }
+
 
 void drawAngle(float angle ){
  
@@ -62,13 +64,16 @@ void drawRibbon(float angle){
   
   float thick = 10;
   
+  // add a new pt based on the current angle
+  // if we have more than 50 pts, erase the first one
   history.add( new PVector(currentPt.x, currentPt.y) ); 
-  
   if( history.size() > 50 ) history.remove(0);
   
   noFill();
   beginShape(TRIANGLE_STRIP);
   
+  // create a triangle strip based on the 
+  // history of points and their angles
   for(int i=0; i<history.size()-1; i++){
      
       PVector pt1 = history.get(i);
