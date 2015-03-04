@@ -11,7 +11,7 @@ Demonstrates how to draw triangle primitives using beginShape() and endShape()
 Demonstrates how to draw a triangle strip gesture based through mouse interactions
 
 ## Photo Ribbon
-Adapt colors from the triangle strip from a photograph's pixels
+Adapt triangle strip segments' colors from a photograph
 
 ## Noise Ribbon
 Use Perlin Noise to animate a gesture algorithmically
